@@ -9,6 +9,7 @@ class Henkamono {
 public:
     int count_of_blocks;
     int conf1, conf2;
+	double henkamonoOutput;
     std::vector<Block> blocks;
 
     Henkamono(int p_conf1, int p_conf2, int p_count_of_blocks);
@@ -35,7 +36,7 @@ public:
     void new_print_state();
     void classic_print_state();
 
-    int work(std::string func_name, std::string state_name, bool print, std::vector<std::vector<double>>& all_worked_numbers);
+    int work(std::string func_name, std::string state_name);
 };
 
 #endif // HENKAMONO_H

@@ -105,7 +105,7 @@ void Henkamono::init_blocks(std::vector<double> init_state) {
 	}
 }
 
-int Henkamono::work(std::string func_name, std::string state_name, bool print, std::vector<std::vector<double>>& all_worked_numbers) {
+int Henkamono::work(std::string func_name, std::string state_name, bool print) {
     std::vector<std::vector<double>> history;
     int iters = 0;
 
@@ -115,10 +115,6 @@ int Henkamono::work(std::string func_name, std::string state_name, bool print, s
         for (const auto& block : blocks) {
             currentState.push_back(block.state_of_block);
             currentState.push_back(block.output);
-        }
-
-        if (iters > 0) {
-            all_worked_numbers.push_back(currentState);
         }
 
         auto it = std::find_if(history.begin(), history.end(),
@@ -144,5 +140,6 @@ int Henkamono::work(std::string func_name, std::string state_name, bool print, s
         if (it != history.end()) break;
         history.push_back(currentState);
     }
+	henkamonoOutput = currentState.back();
     return iters;
 }
