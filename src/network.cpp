@@ -1,9 +1,11 @@
 #include "utils.h"
 #include <vector>
 
+// Конструктор
 Network::Network(std::string p_typeOfBlocks, std::vector<int> p_countOfNeuronsOnLayers) 
 	: typeOfBlocks(p_typeOfBlocks), countOfNeuronsOnLayers(p_countOfNeuronsOnLayers);
 
+// Конструктор (по умолчанию)
 Network::Network() : typeOfBlocks("NegTau"), countOfNeuronsOnLayers({2, 2});
 
 void Network::calcOutputOfLayer(int numOfLayer) {
@@ -19,6 +21,7 @@ void Network::calcOutputOfLayer(int numOfLayer) {
 	}
 }
 
+// Отработка всей нейросети
 std::vector<double> Network::work() {
 	for (int i = 0; i < weightsOfLayers.size(); i++) {
 		calcOutputOfLayer(i);
@@ -26,7 +29,8 @@ std::vector<double> Network::work() {
 	return inputOutputVector;
 }
 
-void Network::createNeurons(int numOfLayer) {
+// Создание и инициализация нейронов
+void Network::createAndInitNeurons(int numOfLayer) {
 	for (int i = 0; i < neuronsOfLayers[numOfLayer].size(); i++) {
 		Henkamono neuron;
 		neuron.init_blocks(initStates[numOfLayer][i]);
@@ -34,4 +38,5 @@ void Network::createNeurons(int numOfLayer) {
 	}
 }
 
+// Обучение сети
 void Network::train() {}
