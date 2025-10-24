@@ -23,7 +23,7 @@ public:
 	
 	std::vector<double> work();
 	
-	void createNeurons(int numOfLayer);
+	void createAndInitNeurons(int numOfLayer);
 	
 	void train();
 	
