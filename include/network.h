@@ -14,6 +14,7 @@ public:
 	std::vector<std::vector<Henkamono>> neuronsOfLayers;
 	std::vector<std::vector<std::vector<double>>> initStates
 	
+	// Вектор с количеством нейронов на каждом слое (его размер равен количеству слоёв)
 	std::vector<int> countOfNeuronsOnLayers;
 	
 	Network(std::string p_typeOfBlocks, std::vector<int> p_countOfNeuronsOnLayers);
@@ -23,7 +24,9 @@ public:
 	
 	std::vector<double> work();
 	
-	void createAndInitNeurons(int numOfLayer);
+	void createAndInitLayerNeurons(int numOfLayer);
+	
+	void createAndInitAllNeurons();
 	
 	void train();
 	
