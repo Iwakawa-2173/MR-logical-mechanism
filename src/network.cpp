@@ -29,12 +29,19 @@ std::vector<double> Network::work() {
 	return inputOutputVector;
 }
 
-// Создание и инициализация нейронов
-void Network::createAndInitNeurons(int numOfLayer) {
+// Создание и инициализация нейронов слоя
+void Network::createAndInitLayerNeurons(int numOfLayer) {
 	for (int i = 0; i < neuronsOfLayers[numOfLayer].size(); i++) {
 		Henkamono neuron;
 		neuron.init_blocks(initStates[numOfLayer][i]);
 		neuronsOfLayers[numOfLayer].push_back();
+	}
+}
+
+// Создание и инициализация нейронов слоя всей сети
+void Network::createAndInitAllNeurons () {
+	for (int i = 0; i < countOfNeuronsOnLayers.size(); i++) {
+		createAndInitLayerNeurons(i);
 	}
 }
 
